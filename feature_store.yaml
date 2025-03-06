@@ -1,0 +1,17 @@
+project: feast_client
+# By default, the registry is a file (but can be turned into a more scalable SQL-backed registry)
+registry: data/registry.db
+# The provider primarily specifies default offline / online stores & storing the registry in a given cloud
+provider: local
+online_store:
+    type: sqlite
+    path: data/online_store.db
+entity_key_serialization_version: 2
+offline_store:
+    type: postgres
+    host: postgres.observability.svc.cluster.local
+    port: 5432
+    database: metrics
+    db_schema: public
+    user: admin
+    password: admin1234
