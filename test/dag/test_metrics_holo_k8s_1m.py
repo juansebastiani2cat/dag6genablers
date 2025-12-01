@@ -35,7 +35,7 @@ config = {
 default_args = {
     "owner": "airflow",
     "depends_on_past": False,
-    "start_date": datetime(2024, 12, 22, tzinfo=pytz.UTC),
+    "start_date": datetime(2025, 12, 01, tzinfo=pytz.UTC),
     "email_on_failure": False,
     "email_on_retry": False,
     "retries": 1,
@@ -46,6 +46,7 @@ dag = DAG(
     default_args=default_args,
     description="Metrics holo k8s 1m (node CPU → Postgres)",
     schedule_interval=timedelta(minutes=1),
+    catchup=False,
     tags=["i2cat_etl"],
     concurrency=5,
     max_active_runs=2,
